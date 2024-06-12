@@ -579,7 +579,7 @@ abstract contract ValidationManager is EIP712, SelectorManager, HookManager, Exe
         return signer.checkSignature(bytes32(PermissionId.unwrap(pId)), caller, _toWrappedHash(hash), validatorSig);
     }
 
-    function _toWrappedHash(bytes32 hash) internal view returns (bytes32) {
+    function _toWrappedHash(bytes32 hash) public view returns (bytes32) {
         return _hashTypedData(keccak256(abi.encode(KERNEL_WRAPPER_TYPE_HASH, hash)));
     }
 }
